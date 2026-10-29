@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#070a11">
+  <meta name="theme-color" content="#141512">
   <meta name="description" content="Ahmed Samer — Software Engineer, Full-Stack Engineer, AI builder, competitive programmer, and technical founder.">
   <meta property="og:title" content="Ahmed Samer — Software Engineer & AI Builder">
   <meta property="og:description" content="Software engineering, fintech, AI products, system design, and competitive programming.">
@@ -12,14 +12,19 @@
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <div class="ambient a"></div><div class="ambient b"></div>
-  <header id="top"><nav class="shell nav">
-    <a class="brand" href="#top"><span>&lt;/&gt;</span> Ahmed<strong>.</strong></a>
-    <div class="navlinks"><a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a></div>
-    <button id="theme" aria-label="Toggle theme">◐</button>
-  </nav></header>
-
-  <main>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <nav class="shell nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Ahmed Samer — home"><span class="brand-mark" aria-hidden="true">✳</span> Ahmed Samer<span aria-hidden="true">.</span></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu +</button>
+      <div class="navlinks" id="navigation">
+        <a href="#projects">Work</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#skills">Stack</a><a href="#contact">Contact</a>
+      </div>
+      <a class="nav-contact" href="https://www.linkedin.com/in/ahmed-samer-a5ab7620a" target="_blank" rel="noopener noreferrer">Let’s connect <span aria-hidden="true">↗</span></a>
+    </nav>
+    <div class="scroll-progress" aria-hidden="true"></div>
+  </header>
+  <main id="main" tabindex="-1">
     <section class="shell hero">
       <div class="reveal">
         <p class="eyebrow"><i></i> Building software that reaches production</p>
@@ -61,8 +66,8 @@
     </div></section>
 
     <section class="shell section" id="projects">
-      <div class="heading split reveal"><div><p class="eyebrow">03 / Selected work</p><h2>Products, systems, AI experiments, and engineering projects.</h2></div><div class="filters"><button class="active" data-filter="all">All</button><button data-filter="product">Products</button><button data-filter="ai">AI</button><button data-filter="engineering">Engineering</button></div></div>
-      <div class="projects">
+      <div class="heading split reveal"><div><p class="eyebrow">03 / Selected work</p><h2>Products, systems, AI experiments, and engineering projects.</h2></div><div class="filters" role="group" aria-label="Filter projects"><button class="active" data-filter="all">All</button><button data-filter="product">Products</button><button data-filter="ai">AI</button><button data-filter="engineering">Engineering</button></div></div>
+      <p id="filter-status" class="sr-only" role="status" aria-live="polite">9 projects shown</p><div class="projects" id="project-list">
         <article class="project featured reveal" data-category="product ai engineering"><div class="top"><span>01</span><b class="badge accent">Founder project</b></div><h3>Interview Intelligence</h3><p>AI-assisted hiring and interview-intelligence platform for structured interviews, transcription, evidence-backed evaluation, and better hiring decisions.</p><ul><li>Scheduling, candidate workflows, roles, dashboards, and templates</li><li>Transcription, résumé parsing/matching, AI scoring, summaries, and insights</li><li>Provider-agnostic AI architecture with human oversight</li><li>.NET 10 modular backend, Next.js, PostgreSQL, Redis, background jobs, Docker</li></ul><div class="chips"><span>.NET 10</span><span>Next.js</span><span>PostgreSQL</span><span>AI/LLM</span></div><small>Private · active development</small></article>
         <article class="project featured reveal" data-category="product engineering"><div class="top"><span>02</span><b class="badge">Product</b></div><h3>LeadAtlas</h3><p>Company-discovery and lead-intelligence platform designed to turn company data into structured, searchable sales intelligence.</p><ul><li>Search by geography and company attributes</li><li>Lead/contact enrichment and document/spreadsheet imports</li><li>Modular .NET architecture with normalized PostgreSQL model</li><li>React/Vite, EF Core, Docker, architecture and integration tests</li></ul><div class="chips"><span>.NET 10</span><span>React</span><span>PostgreSQL</span><span>Docker</span></div><small>Private · active development</small></article>
         <article class="project reveal" data-category="ai product"><div class="top"><span>03</span><b class="badge">GenAI</b></div><h3>Shura — AI Legal Consultation</h3><p>Jordan-focused legal-consultation platform that processes legal questions with AI and retrieves relevant material from law books.</p><div class="chips"><span>OpenAI</span><span>BERT</span><span>FastAPI</span><span>Flask</span><span>Hugging Face</span></div><a href="https://github.com/ahmed1v0/Gen-Ai-Project" target="_blank" rel="noreferrer">View repository ↗</a></article>
@@ -105,3 +110,4 @@
   <script src="./script.js" defer></script>
 </body>
 </html>
+
