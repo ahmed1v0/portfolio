@@ -1,9 +1,85 @@
-const root=document.documentElement,header=document.querySelector('header'),theme=document.getElementById('theme'),repos=document.getElementById('repos'),followers=document.getElementById('followers');
-const saved=localStorage.getItem('portfolio-theme');if(saved==='light'||saved==='dark')root.dataset.theme=saved;
-theme?.addEventListener('click',()=>{const next=root.dataset.theme==='light'?'dark':'light';root.dataset.theme=next;localStorage.setItem('portfolio-theme',next)});
-addEventListener('scroll',()=>header?.classList.toggle('scrolled',scrollY>12),{passive:true});
-const reveal=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');reveal.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(el=>reveal.observe(el));
-const sections=[...document.querySelectorAll('main section[id]')],nav=[...document.querySelectorAll('.navlinks a')];function activeNav(){let current='';const y=scrollY+150;sections.forEach(s=>{if(s.offsetTop<=y)current=s.id});nav.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===`#${current}`))}addEventListener('scroll',activeNav,{passive:true});activeNav();
-const roles=['Backend engineering','Full-stack product development','Applied AI & LLM systems','Fintech & payment systems','System design & architecture'];const typed=document.getElementById('typed');let ri=0,ci=roles[0].length,deleting=true;function type(){if(!typed||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const text=roles[ri];if(deleting){ci--;typed.textContent=text.slice(0,Math.max(ci,0));if(ci<=0){deleting=false;ri=(ri+1)%roles.length;setTimeout(type,250);return}setTimeout(type,28);return}const next=roles[ri];ci++;typed.textContent=next.slice(0,ci);if(ci>=next.length){deleting=true;setTimeout(type,1700);return}setTimeout(type,52)}setTimeout(type,1200);
-const filters=[...document.querySelectorAll('.filters button')],cards=[...document.querySelectorAll('.project')];filters.forEach(b=>b.addEventListener('click',()=>{filters.forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.filter;cards.forEach(c=>{const cats=(c.dataset.category||'').split(' ');c.classList.toggle('hidden',f!=='all'&&!cats.includes(f))})}));
-(async()=>{try{const r=await fetch('https://api.github.com/users/ahmed1v0',{headers:{Accept:'application/vnd.github+json'}});if(!r.ok)throw new Error();const d=await r.json();if(repos)repos.textContent=d.public_repos??'—';if(followers)followers.textContent=d.followers??'—'}catch{if(repos)repos.textContent='10+';if(followers)followers.textContent='—'}})();
+'use strict';
+
+const header = document.querySelector('.site-header');
+const menuButton = document.querySelector('.menu-toggle');
+const navigation = document.querySelector('.navlinks');
+const navigationLinks = [...document.querySelectorAll('.navlinks a')];
+const sections = [...document.querySelectorAll('main section[id]')];
+
+function closeMenu({ restoreFocus = false } = {}) {
+  navigation.classList.remove('is-open');
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.textContent = 'Menu +';
+  if (restoreFocus) menuButton.focus();
+}
+
+if (menuButton && navigation) {
+  document.documentElement.classList.add('nav-ready');
+  menuButton.addEventListener('click', () => {
+    const expanded = menuButton.getAttribute('aria-expanded') !== 'true';
+    menuButton.setAttribute('aria-expanded', String(expanded));
+    menuButton.textContent = expanded ? 'Close −' : 'Menu +';
+    navigation.classList.toggle('is-open', expanded);
+  });
+  header.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menuButton.getAttribute('aria-expanded') === 'true') {
+      closeMenu({ restoreFocus: true });
+    }
+  });
+  navigationLinks.forEach((link) => link.addEventListener('click', () => {
+    const wasOpen = menuButton.getAttribute('aria-expanded') === 'true';
+    closeMenu();
+    if (wasOpen) {
+      const target = document.querySelector(link.hash);
+      target?.setAttribute('tabindex', '-1');
+      target?.focus({ preventScroll: true });
+    }
+  }));
+  matchMedia('(max-width: 760px)').addEventListener('change', () => closeMenu());
+}
+
+const scrollProgress = document.querySelector('.scroll-progress');
+
+function updateNavigation() {
+  const scrollableHeight = document.documentElement.scrollHeight - innerHeight;
+  const progress = scrollableHeight > 0 ? Math.min(1, Math.max(0, scrollY / scrollableHeight)) : 0;
+  if (scrollProgress) scrollProgress.style.transform = 'scaleX(' + progress + ')';
+  let current = '';
+  for (const section of sections) {
+    if (section.getBoundingClientRect().top <= 160) current = section.id;
+  }
+  navigationLinks.forEach((link) => {
+    if (link.hash === `#${current}`) link.setAttribute('aria-current', 'location');
+    else link.removeAttribute('aria-current');
+  });
+}
+
+let scrollScheduled = false;
+addEventListener('scroll', () => {
+  if (scrollScheduled) return;
+  scrollScheduled = true;
+  requestAnimationFrame(() => {
+    updateNavigation();
+    scrollScheduled = false;
+  });
+}, { passive: true });
+updateNavigation();
+addEventListener('resize', updateNavigation, { passive: true });
+addEventListener('load', updateNavigation, { once: true });
+
+const filterButtons = [...document.querySelectorAll('.filters button')];
+const projects = [...document.querySelectorAll('.project')];
+const filterStatus = document.querySelector('#filter-status');
+if (filterButtons.length) document.querySelector('.filters').hidden = false;
+filterButtons.forEach((button) => {
+  button.setAttribute('aria-pressed', String(button.dataset.filter === 'all'));
+  button.addEventListener('click', () => {
+    filterButtons.forEach((other) => other.setAttribute('aria-pressed', String(other === button)));
+    const filter = button.dataset.filter;
+    projects.forEach((project) => {
+      project.hidden = filter !== 'all' && !project.dataset.category.split(' ').includes(filter);
+    });
+    if (filterStatus) filterStatus.textContent = `${projects.filter((project) => !project.hidden).length} projects shown`;
+    updateNavigation();
+  });
+});
