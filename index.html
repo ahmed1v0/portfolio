@@ -25,28 +25,67 @@
     <div class="scroll-progress" aria-hidden="true"></div>
   </header>
   <main id="main" tabindex="-1">
-    <section class="shell hero">
-      <div class="reveal">
-        <p class="eyebrow"><i></i> Building software that reaches production</p>
-        <h1>Software engineer.<br><span>AI product builder.</span></h1>
-        <p class="lead">I’m <b>Ahmed Samer</b>, a full-stack software engineer working across .NET, distributed systems, fintech, modern web applications, and applied AI. I care about clean architecture, correct systems, useful products, and the engineering required to make them production-ready.</p>
-        <p class="focus">Current focus: <strong id="typed">Backend engineering</strong><em></em></p>
-        <div class="actions"><a class="btn primary" href="#projects">Explore my work ↘</a><a class="btn" href="https://github.com/ahmed1v0" target="_blank" rel="noreferrer">GitHub ↗</a></div>
-        <div class="quick"><div><b>.NET + AI</b><span>Core engineering lane</span></div><div><b>Fintech</b><span>Production domain work</span></div><div><b>Founder</b><span>Interview Intelligence</span></div></div>
+    <section class="shell hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Independent mind. Engineering discipline.</p>
+        <h1 id="hero-title">Built with<br><em>intent.</em><span class="hero-period" aria-hidden="true">✳</span></h1>
+        <p class="hero-intro">I’m Ahmed Samer.<br><span>I turn complex problems into thoughtful software.</span></p>
+        <p class="hero-roles">Software Engineer <span>/</span> Full-Stack Developer<br>AI Engineering Enthusiast</p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">Explore work <span aria-hidden="true">↘</span></a>
+          <a class="btn" href="#contact">Let’s talk <span aria-hidden="true">↗</span></a>
+          <a class="text-link resume-link" href="./resume.html">Résumé <span aria-hidden="true">↗</span></a>
+        </div>
       </div>
-      <aside class="profile card reveal">
-        <div class="profiletop"><img src="https://avatars.githubusercontent.com/u/97549170?v=4" alt="Ahmed Samer"><div><small>SOFTWARE ENGINEER</small><h2>Ahmed Samer</h2><p>Full-Stack · Backend · Applied AI</p></div></div>
-        <div class="code"><div class="dots">● ● ●</div><pre><code><span>const</span> engineer = {
-  craft: <i>"production software"</i>,
-  backend: [<i>".NET"</i>, <i>"PostgreSQL"</i>],
-  frontend: [<i>"React"</i>, <i>"Next.js"</i>],
-  ai: [<i>"LLMs"</i>, <i>"RAG"</i>, <i>"agents"</i>],
-  mindset: <i>"design → build → ship"</i>
-};</code></pre></div>
-        <div class="stats"><div><b id="repos">—</b><span>public repos</span></div><div><b id="followers">—</b><span>followers</span></div><div><b>5</b><span>major awards</span></div></div>
-      </aside>
+      <div class="system-figure" data-layer="systems">
+        <div class="figure-caption"><span>Fig. 01 / From idea to system</span><span aria-hidden="true">[ AS—01 ]</span></div>
+        <div class="system-art">
+          <svg viewBox="0 0 560 440" role="img" aria-labelledby="system-title system-description">
+            <title id="system-title">The layers of thoughtful software</title>
+            <desc id="system-description">Three connected isometric layers represent interfaces, intelligence, and systems. A central signal connects them into one product.</desc>
+            <defs>
+              <pattern id="dot-grid" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="currentColor" opacity=".22"/></pattern>
+              <linearGradient id="layer-fill" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#303a24" stop-opacity=".65"/><stop offset="1" stop-color="#141512" stop-opacity=".4"/></linearGradient>
+            </defs>
+            <rect width="560" height="440" fill="url(#dot-grid)"/>
+            <g class="construction" fill="none" stroke="currentColor" stroke-width="1">
+              <path d="M20 240 280 90 540 240 280 390Z" stroke-dasharray="3 7"/>
+              <path d="M280 26V420M25 97 535 392M25 392 535 97" opacity=".25"/>
+              <ellipse cx="280" cy="260" rx="222" ry="127" stroke-dasharray="2 8"/>
+              <path d="M30 40h20m-10-10v20M510 400h20m-10-10v20"/>
+            </g>
+            <g class="diagram-layer layer-systems">
+              <path class="layer-side" d="m100 280 180 104 180-104v17L280 401 100 297Z"/>
+              <path class="layer-plane" d="m100 280 180-104 180 104-180 104Z"/>
+              <path class="layer-grid" d="m160 245 180 104m-120-139 180 104m-240 0 180-104m-120 139 180-104"/>
+              <path class="layer-trace" d="m190 280 90 52 90-52-90-52Z"/>
+            </g>
+            <g class="diagram-layer layer-intelligence">
+              <path class="layer-side" d="m100 197 180 104 180-104v17L280 318 100 214Z"/>
+              <path class="layer-plane" d="m100 197 180-104 180 104-180 104Z"/>
+              <path class="layer-grid" d="m160 162 180 104m-120-139 180 104m-240 0 180-104m-120 139 180-104"/>
+              <path class="layer-trace" d="m220 197 60-35 60 35-60 35Z"/>
+            </g>
+            <g class="diagram-layer layer-interfaces">
+              <path class="layer-side" d="m100 114 180 104 180-104v17L280 235 100 131Z"/>
+              <path class="layer-plane" d="m100 114 180-104 180 104-180 104Z"/>
+              <path class="layer-grid" d="m160 79 180 104m-120-139 180 104m-240 0L340 79m-120 139 180-104"/>
+              <path class="layer-trace" d="m250 114 30-17 30 17-30 17Z"/>
+            </g>
+            <path class="signal-line" d="M280 114V332"/>
+            <g class="signal-node"><path d="m280 81 10 23 25 10-25 10-10 23-10-23-25-10 25-10Z"/><circle cx="280" cy="114" r="4" fill="#141512"/></g>
+            <g class="diagram-labels"><path d="M460 114h35M100 197H65M460 280h35"/><text x="502" y="118">01</text><text x="39" y="201">02</text><text x="502" y="284">03</text></g>
+          </svg>
+        </div>
+        <div class="system-controls" role="group" aria-label="Explore engineering layers" hidden>
+          <button type="button" data-layer="systems" aria-pressed="true" aria-controls="layer-description"><span>01</span> Systems</button>
+          <button type="button" data-layer="interfaces" aria-pressed="false" aria-controls="layer-description"><span>02</span> Interfaces</button>
+          <button type="button" data-layer="intelligence" aria-pressed="false" aria-controls="layer-description"><span>03</span> Intelligence</button>
+        </div>
+        <p id="layer-description" class="layer-description" aria-live="polite">Clear boundaries. Reliable APIs. A foundation built for the real world.</p>
+      </div>
+      <div class="hero-footnote"><span>Backend depth. Product perspective.</span><span>.NET / Full-stack / Applied AI</span><a href="#projects">Scroll to explore <span aria-hidden="true">↓</span></a></div>
     </section>
-
     <section class="shell section" id="about">
       <div class="heading reveal"><p class="eyebrow">01 / About</p><h2>I like hard engineering problems with a real product on the other side.</h2></div>
       <div class="aboutgrid">
@@ -110,4 +149,3 @@
   <script src="./script.js" defer></script>
 </body>
 </html>
-

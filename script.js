@@ -87,3 +87,24 @@ async function loadGitHubStats() {
   }
 }
 loadGitHubStats();
+
+const systemFigure = document.querySelector('.system-figure');
+const layerControls = document.querySelector('.system-controls');
+const layerDescription = document.querySelector('#layer-description');
+const layerDescriptions = {
+  systems: 'Clear boundaries. Reliable APIs. A foundation built for the real world.',
+  interfaces: 'Complex workflows made clear, from the first interaction to the last detail.',
+  intelligence: 'Applied AI grounded in context, useful evidence, and human oversight.',
+};
+if (systemFigure && layerControls && layerDescription) {
+  layerControls.hidden = false;
+  layerControls.querySelectorAll('button').forEach((button) => {
+    button.addEventListener('click', () => {
+      systemFigure.dataset.layer = button.dataset.layer;
+      layerDescription.textContent = layerDescriptions[button.dataset.layer];
+      layerControls.querySelectorAll('button').forEach((control) => {
+        control.setAttribute('aria-pressed', String(control === button));
+      });
+    });
+  });
+}
