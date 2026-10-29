@@ -34,8 +34,8 @@
     ]);
     if (profileResult.status === 'fulfilled') {
       const profile = profileResult.value;
-      document.querySelector('#repos').textContent = Number.isInteger(profile.public_repos) ? profile.public_repos : '—';
-      document.querySelector('#followers').textContent = Number.isInteger(profile.followers) ? profile.followers : '—';
+      document.querySelector('#repos').textContent = Number.isInteger(profile?.public_repos) && profile.public_repos >= 0 ? profile.public_repos : '—';
+      document.querySelector('#followers').textContent = Number.isInteger(profile?.followers) && profile.followers >= 0 ? profile.followers : '—';
     }
     if (eventsResult.status === 'rejected' || !Array.isArray(eventsResult.value)) {
       status.textContent = 'Unavailable';
@@ -48,8 +48,8 @@
 
     list.replaceChildren();
     eventsResult.value.forEach((event) => {
-      const repository = event.repo?.name;
-      const date = new Date(event.created_at);
+      const repository = event?.repo?.name;
+      const date = new Date(event?.created_at);
       // Validate third-party data before creating a link; never inject response HTML.
       if (typeof repository !== 'string' || !/^[\w.-]+\/[\w.-]+$/.test(repository) || !Number.isFinite(date.getTime())) return;
       const item = document.createElement('li');

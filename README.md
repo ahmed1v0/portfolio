@@ -43,7 +43,7 @@ Before deploying to a confirmed public domain, set an absolute `og:image` / `twi
 
 ```sh
 python tools/verify_site.py
-node --test tests/activity.test.cjs
+node --test tests/activity.test.cjs tests/motion.test.cjs
 ```
 
 The integrity check uses Python's standard library and Node's syntax checker. It validates local assets, anchors, metadata, project count, preserved external destinations and safe SVGs. No lint, TypeScript, or production build pipeline exists because this is a buildless JavaScript site. Browser checks and limitations are recorded in `docs/validation.md`.

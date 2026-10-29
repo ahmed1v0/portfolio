@@ -541,6 +541,7 @@ footer { min-height: 100px; display: flex; justify-content: space-between; align
 }
 @media (max-width: 380px) {
   .brand { gap: 8px; font-size: .9rem; }
+  .hero h1 { font-size: clamp(3.8rem, 19vw, 4.5rem); }
   .menu-toggle { font-size: .75rem; padding-inline: 10px; }
   .principles-strip { grid-template-columns: 1fr; }
   .stack-identity h3 { font-size: 1.65rem; }
