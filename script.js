@@ -26,7 +26,15 @@ if (menuButton && navigation) {
       closeMenu({ restoreFocus: true });
     }
   });
-  navigationLinks.forEach((link) => link.addEventListener('click', () => closeMenu()));
+  navigationLinks.forEach((link) => link.addEventListener('click', () => {
+    const wasOpen = menuButton.getAttribute('aria-expanded') === 'true';
+    closeMenu();
+    if (wasOpen) {
+      const target = document.querySelector(link.hash);
+      target?.setAttribute('tabindex', '-1');
+      target?.focus({ preventScroll: true });
+    }
+  }));
   matchMedia('(max-width: 760px)').addEventListener('change', () => closeMenu());
 }
 
@@ -62,6 +70,7 @@ addEventListener('load', updateNavigation, { once: true });
 const filterButtons = [...document.querySelectorAll('.filters button')];
 const projects = [...document.querySelectorAll('.project')];
 const filterStatus = document.querySelector('#filter-status');
+if (filterButtons.length) document.querySelector('.filters').hidden = false;
 filterButtons.forEach((button) => {
   button.setAttribute('aria-pressed', String(button.dataset.filter === 'all'));
   button.addEventListener('click', () => {
@@ -74,23 +83,3 @@ filterButtons.forEach((button) => {
     updateNavigation();
   });
 });
-
-async function loadGitHubStats() {
-  const repos = document.querySelector('#repos');
-  const followers = document.querySelector('#followers');
-  if (!repos || !followers) return;
-  try {
-    const response = await fetch('https://api.github.com/users/ahmed1v0', {
-      headers: { Accept: 'application/vnd.github+json' },
-      signal: AbortSignal.timeout(6000),
-    });
-    if (!response.ok) throw new Error('GitHub statistics unavailable');
-    const profile = await response.json();
-    repos.textContent = Number.isInteger(profile.public_repos) ? profile.public_repos : '—';
-    followers.textContent = Number.isInteger(profile.followers) ? profile.followers : '—';
-  } catch {
-    repos.textContent = '—';
-    followers.textContent = '—';
-  }
-}
-loadGitHubStats();
