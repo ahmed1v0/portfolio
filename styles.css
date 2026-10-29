@@ -251,3 +251,31 @@ footer { min-height: 100px; display: flex; justify-content: space-between; align
   .resume h2, .resume h3 { break-after: avoid; }
   @page { margin: 16mm; }
 }
+
+/* V2: one spatial language, shared by the installation and project artwork. */
+:root { --duration-fast: 180ms; --duration-medium: 420ms; --duration-reveal: 800ms; }
+.hero { isolation: isolate; }
+.hero::before { content: ""; position: absolute; z-index: -1; inset: 0 0 10% 45%; pointer-events: none; background: radial-gradient(ellipse at 55% 42%, #b5d1780c, transparent 65%); }
+.hero-copy { position: relative; z-index: 1; }
+.hero h1 { letter-spacing: -.08em; }
+.hero-intro { max-width: 440px; }
+.system-figure { position: relative; }
+.system-art { position: relative; perspective: 900px; }
+.system-art::before { content: ""; position: absolute; width: 52%; height: 16%; bottom: 7%; left: 24%; border-radius: 50%; background: #0008; filter: blur(22px); z-index: -1; }
+.system-art svg { overflow: visible; transform-origin: 50% 60%; filter: drop-shadow(0 12px 12px #0004); }
+.layer-side { fill: #11140f; stroke: #566048; }
+.layer-plane { fill: #1a2017; fill-opacity: .94; }
+.layer-grid { stroke: #7e8e66; opacity: .5; }
+.signal-node { filter: drop-shadow(0 0 12px #d5f43330); }
+.system-figure[data-layer="interfaces"] .layer-interfaces { transform: translateY(-7px); }
+.system-figure[data-layer="intelligence"] .layer-intelligence { transform: translateY(-5px); }
+.system-figure[data-layer="systems"] .layer-systems { transform: translateY(4px); }
+.figure-caption::before { content: "+"; color: var(--accent); }
+.figure-caption > span:first-child { margin-right: auto; }
+@media (max-width: 760px) {
+  .hero::before { inset: 35% -10px 0; }
+  .hero h1 { margin-bottom: 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .diagram-layer { transform: none !important; }
+}
