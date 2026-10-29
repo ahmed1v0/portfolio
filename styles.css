@@ -420,3 +420,28 @@ footer { min-height: 100px; display: flex; justify-content: space-between; align
   .blueprint-insight { min-height: 125px; }
   .blueprint-selector { margin-top: 18px; }
 }
+
+/* Motion has a beginning and an end. The page never waits on animation to work. */
+.title-line { display: block; overflow: clip; padding-bottom: .12em; margin-bottom: -.12em; }
+.hero h1 .title-line, .hero h1 .title-line > span { color: var(--text); }
+.title-line > span { display: block; }
+.motion-ready .title-line > span { animation: title-arrive 900ms var(--ease) both; }
+.motion-ready .title-line:nth-child(2) > span { animation-delay: 100ms; }
+.motion-ready .hero-intro, .motion-ready .hero-roles, .motion-ready .hero-copy .actions { animation: content-arrive 800ms var(--ease) both; animation-delay: 180ms; }
+.motion-ready .hero-copy .actions { animation-delay: 260ms; }
+.motion-ready .system-art svg { animation: blueprint-arrive 1100ms var(--ease) both; }
+.is-entering { animation: content-arrive var(--duration-reveal) var(--ease) both; }
+.depth-enabled { transform: perspective(900px) rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg)); transition: transform 500ms var(--ease); }
+.depth-enabled:hover { transition-duration: 150ms; }
+.system-art::after { content: ""; position: absolute; pointer-events: none; inset: 0; background: radial-gradient(ellipse at var(--light-x, 50%) var(--light-y, 50%), #d5f4780c, transparent 50%); opacity: 0; transition: opacity var(--duration-medium); }
+.system-art.depth-enabled:hover::after { opacity: 1; }
+.btn > span, .text-link > span, .nav-contact > span { display: inline-block; transition: transform var(--duration-medium) var(--ease); }
+.btn:hover > span, .text-link:hover > span, .nav-contact:hover > span { transform: translate(3px, -3px); }
+.btn.primary:hover > span { transform: translate(3px, 3px); }
+@keyframes title-arrive { from { transform: translateY(110%); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes content-arrive { from { transform: translateY(18px); opacity: .15; } to { transform: none; opacity: 1; } }
+@keyframes blueprint-arrive { from { transform: translateY(18px) scale(.96); opacity: .1; } to { transform: none; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .depth-enabled, .is-entering, .title-line > span { transform: none !important; opacity: 1 !important; }
+  .system-art::after { display: none; }
+}

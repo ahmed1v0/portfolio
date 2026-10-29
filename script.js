@@ -30,7 +30,12 @@ if (menuButton && navigation) {
   matchMedia('(max-width: 760px)').addEventListener('change', () => closeMenu());
 }
 
+const scrollProgress = document.querySelector('.scroll-progress');
+
 function updateNavigation() {
+  const scrollableHeight = document.documentElement.scrollHeight - innerHeight;
+  const progress = scrollableHeight > 0 ? Math.min(1, Math.max(0, scrollY / scrollableHeight)) : 0;
+  if (scrollProgress) scrollProgress.style.transform = 'scaleX(' + progress + ')';
   let current = '';
   for (const section of sections) {
     if (section.getBoundingClientRect().top <= 160) current = section.id;
@@ -51,6 +56,8 @@ addEventListener('scroll', () => {
   });
 }, { passive: true });
 updateNavigation();
+addEventListener('resize', updateNavigation, { passive: true });
+addEventListener('load', updateNavigation, { once: true });
 
 const filterButtons = [...document.querySelectorAll('.filters button')];
 const projects = [...document.querySelectorAll('.project')];
