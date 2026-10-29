@@ -39,6 +39,7 @@
       </div>
       <div class="system-figure" data-layer="systems">
         <div class="figure-caption"><span>The Living Blueprint / Vol. 01</span><span aria-hidden="true">[ AS—01 ]</span></div>
+        <div class="blueprint-selector" hidden><label for="blueprint-project">Explore a real system</label><select id="blueprint-project" aria-controls="blueprint-insight"><option value="interview">Interview Intelligence</option><option value="leadatlas">LeadAtlas</option><option value="deflex">DefleX</option></select></div>
         <div class="system-art" data-depth>
           <svg viewBox="0 0 560 440" role="img" aria-labelledby="system-title system-description">
             <title id="system-title">The layers of thoughtful software</title>
@@ -77,19 +78,20 @@
             <g class="diagram-labels"><path d="M460 114h35M100 197H65M460 280h35"/><text x="502" y="118">01</text><text x="39" y="201">02</text><text x="502" y="284">03</text></g>
           </svg>
         </div>
-        <div class="system-controls" role="group" aria-label="Explore engineering layers" hidden>
-          <button type="button" data-layer="systems" aria-pressed="true" aria-controls="layer-description"><span>03</span> Systems</button>
-          <button type="button" data-layer="interfaces" aria-pressed="false" aria-controls="layer-description"><span>01</span> Interfaces</button>
-          <button type="button" data-layer="intelligence" aria-pressed="false" aria-controls="layer-description"><span>02</span> Intelligence</button>
+        <div class="system-controls" role="group" aria-label="Choose a blueprint layer" hidden>
+          <button type="button" data-layer="interfaces" aria-pressed="false" aria-controls="blueprint-insight"><span>01</span> Interfaces</button>
+          <button type="button" data-layer="intelligence" aria-pressed="false" aria-controls="blueprint-insight"><span>02</span> Intelligence</button>
+          <button type="button" data-layer="systems" aria-pressed="true" aria-controls="blueprint-insight"><span>03</span> Systems</button>
         </div>
-        <p id="layer-description" class="layer-description" aria-live="polite">Clear boundaries. Reliable APIs. A foundation built for the real world.</p>
-      </div>
-      <div class="hero-footnote"><span>Backend depth. Product perspective.</span><span>.NET / Full-stack / Applied AI</span><a href="#projects">Scroll to explore <span aria-hidden="true">↓</span></a></div>
+        <div class="blueprint-insight" id="blueprint-insight" aria-live="polite" aria-atomic="true"><span class="mono" id="blueprint-context">Interview Intelligence / Systems</span><strong id="blueprint-technology">Modular .NET 10</strong><p id="layer-description">PostgreSQL, Redis, and background jobs support structured interview workflows.</p></div>
+        <a class="blueprint-link text-link" href="#interview-intelligence">Explore this project <span aria-hidden="true">↗</span></a>
+        <span class="blueprint-note">Conceptual architecture · select a project and a layer</span>
+      </div>      <div class="hero-footnote"><span>Backend depth. Product perspective.</span><span>.NET / Full-stack / Applied AI</span><a href="#projects">Scroll to explore <span aria-hidden="true">↓</span></a></div>
     </section>
     <section class="shell section work-section" id="projects" aria-labelledby="work-title">
       <div class="section-heading reveal"><p class="eyebrow">01 / Selected work</p><div><h2 id="work-title">Ideas made<br><em>into systems.</em></h2><p>A selection of products, platforms, and experiments.<br>From the architecture to the last interaction.</p></div></div>
-      <div class="work-toolbar"><span class="mono">Project index / 01—09</span><div class="filters" role="group" aria-label="Filter projects"><button type="button" data-filter="all">All work</button><button type="button" data-filter="product">Products</button><button type="button" data-filter="ai">AI</button><button type="button" data-filter="engineering">Engineering</button></div></div>
-      <p id="filter-status" class="sr-only" role="status" aria-live="polite">9 projects shown</p>
+      <div class="work-toolbar"><span class="mono">Project index / 01—08</span><div class="filters" role="group" aria-label="Filter projects"><button type="button" data-filter="all">All work</button><button type="button" data-filter="product">Products</button><button type="button" data-filter="ai">AI</button><button type="button" data-filter="engineering">Engineering</button></div></div>
+      <p id="filter-status" class="sr-only" role="status" aria-live="polite">8 projects shown</p>
       <div class="projects" id="project-list">
         <article class="project feature-project interview-project reveal" id="interview-intelligence" data-category="product ai engineering" aria-labelledby="interview-title">
           <div class="project-copy">
@@ -146,8 +148,7 @@
         <article class="project index-project deflex-project reveal" id="deflex" data-category="ai product engineering"><span class="project-number">05</span><div class="index-title"><span class="mono">AI SaaS / Customer support</span><h3>DefleX</h3><span class="project-availability">Private · active development</span></div><div class="index-description"><p>AI-powered support deflection: classify requests, retrieve relevant knowledge, draft responses, and automatically resolve eligible cases.</p><div class="chips"><span>ASP.NET Core</span><span>Next.js 14</span><span>PostgreSQL</span><span>SignalR</span><span>AI / RAG</span></div><details class="project-details"><summary>Follow the workflow <span aria-hidden="true">+</span></summary><div class="detail-body"><p>Inbound request → classification → knowledge retrieval → response draft → eligible-case resolution. The product combines ASP.NET Core, Next.js 14, PostgreSQL, SignalR, and AI/RAG.</p></div></details></div><span class="index-symbol" aria-hidden="true">↳</span></article>
         <article class="project index-project reveal" id="shakey" data-category="product engineering"><span class="project-number">06</span><div class="index-title"><span class="mono">NASA Space Apps / 2024</span><h3>Shakey</h3></div><div class="index-description"><p>A Space Apps build associated with a first-place Jordan finish in the 2024 NASA International Space Apps Challenge.</p><div class="chips"><span>Angular</span><span>Hackathon</span><span>Product build</span></div></div><a class="project-arrow" href="https://github.com/ahmed1v0/NasaProject" target="_blank" rel="noopener noreferrer" aria-label="Shakey repository on GitHub">↗</a></article>
         <article class="project index-project compact-project reveal" data-category="ai"><span class="project-number">07</span><div class="index-title"><span class="mono">Machine learning</span><h3>Loan Approval Prediction</h3></div><p class="index-description">Exploring applicant attributes and loan approval prediction.</p><a class="project-arrow" href="https://github.com/ahmed1v0/Loan-Approval-Prediction-System" target="_blank" rel="noopener noreferrer" aria-label="Loan Approval Prediction repository on GitHub">↗</a></article>
-        <article class="project index-project compact-project reveal" data-category="engineering"><span class="project-number">08</span><div class="index-title"><span class="mono">Game development</span><h3>Airplane vs Flappy Birds</h3></div><p class="index-description">A side-scrolling 2D game exploring flight control, action mechanics, and game-development fundamentals.</p><a class="project-arrow" href="https://github.com/ahmed1v0/Airplane-vs-FlappyBirds" target="_blank" rel="noopener noreferrer" aria-label="Airplane vs Flappy Birds repository on GitHub">↗</a></article>
-        <article class="project index-project compact-project reveal" data-category="engineering"><span class="project-number">09</span><div class="index-title"><span class="mono">Competitive programming</span><h3>Algorithms & Practice</h3></div><p class="index-description">Binary lifting and algorithmic problem solving. A place to keep the fundamentals sharp.</p><a class="project-arrow" href="https://github.com/ahmed1v0/BinaryLifting" target="_blank" rel="noopener noreferrer" aria-label="Algorithms and Practice repository on GitHub">↗</a></article>
+        <article class="project index-project compact-project reveal" data-category="engineering"><span class="project-number">08</span><div class="index-title"><span class="mono">Competitive programming</span><h3>Algorithms & Practice</h3></div><p class="index-description">Binary lifting and algorithmic problem solving. A place to keep the fundamentals sharp.</p><a class="project-arrow" href="https://github.com/ahmed1v0/BinaryLifting" target="_blank" rel="noopener noreferrer" aria-label="Algorithms and Practice repository on GitHub">↗</a></article>
       </div>
     </section>
     <section class="shell section" id="about">
@@ -196,5 +197,6 @@
 
   <footer class="shell"><span>Ahmed Samer · Software Engineer & AI Builder</span><a href="#top">Back to top ↑</a></footer>
   <script src="./script.js" defer></script>
+  <script src="./blueprint.js" defer></script>
 </body>
 </html>

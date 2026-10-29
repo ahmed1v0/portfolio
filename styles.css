@@ -401,3 +401,22 @@ footer { min-height: 100px; display: flex; justify-content: space-between; align
   .art-caption { font-size: .5rem; }
   .filters button { padding-inline: 10px; font-size: .7rem; }
 }
+
+/* The Living Blueprint connects the spatial artwork to actual project decisions. */
+.blueprint-selector { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 20px; }
+.blueprint-selector label { font: .58rem/1.5 var(--mono); color: var(--muted); max-width: 110px; }
+.blueprint-selector select { min-width: 0; width: 220px; max-width: 65%; min-height: 42px; padding: 8px 28px 8px 12px; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 0; font: .72rem var(--sans); cursor: pointer; }
+.system-art svg { height: clamp(260px, 26vw, 390px); width: 100%; }
+.blueprint-insight { min-height: 112px; padding-top: 18px; }
+.blueprint-insight > .mono { display: block; font-size: .55rem; color: var(--sub); margin-bottom: 8px; }
+.blueprint-insight > strong { display: block; font-size: .94rem; font-weight: 500; letter-spacing: -.02em; }
+.blueprint-insight p { font-size: .74rem; line-height: 1.65; color: var(--muted); margin: 7px 0 0; max-width: 440px; }
+.blueprint-link { font-size: .7rem; min-height: 40px; border: 0; color: var(--accent); }
+.blueprint-note { display: block; font: .52rem/1.5 var(--mono); color: var(--sub); margin-top: 4px; }
+.system-figure[data-project="leadatlas"] { --accent: #c8b9e9; }
+.system-figure[data-project="deflex"] { --accent: #a6d2d0; }
+@media (max-width: 760px) {
+  .system-art svg { height: auto; }
+  .blueprint-insight { min-height: 125px; }
+  .blueprint-selector { margin-top: 18px; }
+}

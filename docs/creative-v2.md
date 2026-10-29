@@ -27,3 +27,5 @@ Each completed phase is committed separately. Preserve the original brief's prof
 ## Performance and accessibility
 
 Use vector geometry, shared CSS motion tokens, and requestAnimationFrame only on input/scroll. No perpetual JavaScript loop, scroll hijacking, or custom cursor. Disable perspective and motion for reduced-motion/coarse-pointer users. Menus, native disclosures, buttons, and select controls retain their keyboard behavior. Test failure states for optional remote statistics. Do not equate local inspection with field Core Web Vitals certification.
+
+Scope update: the user requested removing Airplane vs Flappy Birds during implementation. The final portfolio contains eight projects; other references remain intact.
